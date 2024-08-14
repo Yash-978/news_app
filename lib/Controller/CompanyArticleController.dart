@@ -1,0 +1,99 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:news_app/Model/Model.dart';
+
+import '../Helper/ApiHelper/apiHelper.dart';
+
+
+// class NewsDataController extends GetxController {
+//   ApiHelper apiHelper = ApiHelper();
+//   NewsDataModal? newsDataModal;
+//   NewsDataModal? businessDataModal;
+//   NewsDataModal? teslaDataModal;
+//   NewsDataModal? techDataModal;
+//   NewsDataModal? wallStreetDataModal;
+//
+//   Future<NewsDataModal?> fetchCompanyApiData() async {
+//     final data = await apiHelper.fetchApiCompanyArticleData();
+//     newsDataModal = NewsDataModal.fromMap(data);
+//     return newsDataModal;
+//   }
+//
+//   Future<NewsDataModal?> fetchBusinessApiData() async {
+//     final data = await apiHelper.fetchApiBusinessData();
+//     businessDataModal = NewsDataModal.fromMap(data);
+//     return businessDataModal;
+//   }
+//
+//   Future<NewsDataModal?> fetchTechApiData() async {
+//     final data = await apiHelper.fetchApiTechData();
+//     techDataModal = NewsDataModal.fromMap(data);
+//     return techDataModal;
+//   }
+//
+//   Future<NewsDataModal?> fetchTeslaApiData() async {
+//     final data = await apiHelper.fetchApiTeslaData();
+//     teslaDataModal = NewsDataModal.fromMap(data);
+//     return teslaDataModal;
+//   }
+//
+//   Future<NewsDataModal?> fetchWallStreetApiData() async {
+//     final data = await apiHelper.fetchApiWallStreetData();
+//     wallStreetDataModal = NewsDataModal.fromMap(data);
+//     return wallStreetDataModal;
+//   }
+//
+//   NewsDataController()
+//   {
+//     fetchCompanyApiData();
+//   }
+// }
+
+
+class NewsDataController extends GetxController {
+  var apiHelper = ApiHelper();
+  NewsDataModal? newsDataModal;
+  NewsDataModal? teslaDataModal;
+  NewsDataModal? businessDataModal;
+  NewsDataModal? techDataModal;
+  NewsDataModal? wallStreetDataModal;
+  // newsDataModal
+  // businessDataModal
+  // teslaDataModal
+  // techDataModal
+  // wallStreetDataModal
+
+  Future<NewsDataModal?> fetchCompanyApiData() async {
+    final data = await apiHelper.fetchApiCompanyArticleData();
+    newsDataModal = NewsDataModal.fromMap(data);
+    return newsDataModal;
+  }
+
+  Future<NewsDataModal?> fetchTeslaApiData() async {
+    final data = await apiHelper.fetchApiTeslaData();
+    teslaDataModal = NewsDataModal.fromMap(data);
+    return teslaDataModal;
+  }
+
+  Future<NewsDataModal?> fetchBusinessApiData() async {
+    final data = await apiHelper.fetchApiBusinessData();
+    businessDataModal = NewsDataModal.fromMap(data);
+    return businessDataModal;
+  }
+
+  Future<NewsDataModal?> fetchTechApiData() async {
+    final data = await apiHelper.fetchApiTechData();
+    techDataModal = NewsDataModal.fromMap(data);
+    return techDataModal;
+  }
+
+  Future<NewsDataModal?> fetchStocksApiData() async {
+    final data = await apiHelper.fetchApiWallStreetData();
+    wallStreetDataModal = NewsDataModal.fromMap(data);
+    return wallStreetDataModal;
+  }
+
+  NewsController() {
+    fetchCompanyApiData();
+  }
+}
