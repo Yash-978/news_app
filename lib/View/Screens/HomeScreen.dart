@@ -127,10 +127,8 @@ class HomePage extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
-                          // detailHelper = fetchData;
-                          // detailList = modal;
-
                           detailPage = newsDataController.fetchCompanyApiData();
+                          detailList=newsDataController.newsDataModal!;
                           selectedIndex = index;
                           Get.toNamed('/detail');
                         },
@@ -216,385 +214,382 @@ class HomePage extends StatelessWidget {
                 }
               },
             ),
-            FutureBuilder(
-              future: newsDataController.fetchTeslaApiData(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return ListView.builder(
-                    itemCount:
-                        newsDataController.teslaDataModal!.articles.length,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          // detailHelper = fetchData;
-                          // detailList = modal;
-                          selectedIndex = index;
-                          Get.toNamed('/detail');
-                        },
-                        child: Card(
-                          color: Colors.black,
-                          child: Column(
-                            children: [
-                              Container(
-                                height: h * 0.3,
-                                width: w * 0.9,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  image: DecorationImage(
-                                    fit: BoxFit.fill,
-                                    image: NetworkImage((newsDataController
-                                                .teslaDataModal!
-                                                .articles[index]
-                                                .urlToImage ==
-                                            '')
-                                        ? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqTDCEsvutyTcwyKh0R7p4a2JJ8GyjNqi7BA&s'
-                                        : newsDataController.teslaDataModal!
-                                            .articles[index].urlToImage),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  newsDataController
-                                      .teslaDataModal!.articles[index].title,
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 20),
-                                child: Align(
-                                  alignment: Alignment.centerRight,
-                                  child: Text(
-                                    newsDataController
-                                        .teslaDataModal!.articles[index].author,
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ),
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 7),
-                                    child: Text(
-                                      'Our Sponsor',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 20),
-                                    child: Align(
-                                      alignment: Alignment.centerRight,
-                                      child: Text(
-                                        newsDataController.teslaDataModal!
-                                            .articles[index].source.name,
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Divider(
-                                thickness: 1,
-                                color: Colors.grey,
-                              )
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  );
-                } else {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              },
-            ),
-            FutureBuilder(
-              future: newsDataController.fetchBusinessApiData(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return ListView.builder(
-                    itemCount:
-                        newsDataController.businessDataModal!.articles.length,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          // detailHelper = fetchData;
-                          // detailList = modal;
-                          selectedIndex = index;
-                          Get.toNamed('/detail');
-                        },
-                        child: Card(
-                          color: Colors.black,
-                          child: Column(
-                            children: [
-                              Container(
-                                height: h * 0.3,
-                                width: w * 0.9,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  image: DecorationImage(
-                                    fit: BoxFit.fill,
-                                    image: NetworkImage(newsDataController
-                                        .businessDataModal!
-                                        .articles[index]
-                                        .urlToImage),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  newsDataController
-                                      .businessDataModal!.articles[index].title,
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 20),
-                                child: Align(
-                                  alignment: Alignment.centerRight,
-                                  child: Text(
-                                    newsDataController.businessDataModal!
-                                        .articles[index].author,
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ),
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 7),
-                                    child: Text(
-                                      'Our Sponsor',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 20),
-                                    child: Align(
-                                      alignment: Alignment.centerRight,
-                                      child: Text(
-                                        newsDataController.businessDataModal!
-                                            .articles[index].source.name,
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Divider(
-                                thickness: 1,
-                                color: Colors.grey,
-                              )
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  );
-                } else {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              },
-            ),
-            FutureBuilder(
-              future: newsDataController.fetchTechApiData(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return ListView.builder(
-                    itemCount:
-                        newsDataController.techDataModal!.articles.length,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          // detailHelper = fetchData;
-                          // detailList = modal;
-                          selectedIndex = index;
-                          Get.toNamed('/detail');
-                        },
-                        child: Card(
-                          color: Colors.black,
-                          child: Column(
-                            children: [
-                              Container(
-                                height: h * 0.3,
-                                width: w * 0.9,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  image: DecorationImage(
-                                    fit: BoxFit.fill,
-                                    image: NetworkImage(newsDataController
-                                        .techDataModal!
-                                        .articles[index]
-                                        .urlToImage),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  newsDataController
-                                      .techDataModal!.articles[index].title,
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 20),
-                                child: Align(
-                                  alignment: Alignment.centerRight,
-                                  child: Text(
-                                    newsDataController
-                                        .techDataModal!.articles[index].author,
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ),
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 7),
-                                    child: Text(
-                                      'Our Sponsor',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 20),
-                                    child: Align(
-                                      alignment: Alignment.centerRight,
-                                      child: Text(
-                                        newsDataController.techDataModal!
-                                            .articles[index].source.name,
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Divider(
-                                thickness: 1,
-                                color: Colors.grey,
-                              )
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  );
-                } else {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              },
-            ),
-            FutureBuilder(
-              future: newsDataController.fetchStocksApiData(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return ListView.builder(
-                    itemCount:
-                        newsDataController.wallStreetDataModal!.articles.length,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          // detailHelper = fetchData;
-                          // detailList = modal;
-                          selectedIndex = index;
-                          Get.toNamed('/detail');
-                        },
-                        child: Card(
-                          color: Colors.black,
-                          child: Column(
-                            children: [
-                              Container(
-                                height: h * 0.3,
-                                width: w * 0.9,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  image: DecorationImage(
-                                    fit: BoxFit.fill,
-                                    image: NetworkImage(newsDataController
-                                        .wallStreetDataModal!
-                                        .articles[index]
-                                        .urlToImage),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  newsDataController.wallStreetDataModal!
-                                      .articles[index].title,
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 20),
-                                child: Align(
-                                  alignment: Alignment.centerRight,
-                                  child: Text(
-                                    newsDataController.wallStreetDataModal!
-                                        .articles[index].author,
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ),
-                              ),
-
-
-
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 7),
-                                    child: Text(
-                                      'Our Sponsor',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 20),
-                                    child: Align(
-                                      alignment: Alignment.centerRight,
-                                      child: Text(
-                                        newsDataController.wallStreetDataModal!
-                                            .articles[index].source.name,
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Divider(
-                                thickness: 1,
-                                color: Colors.grey,
-                              )
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  );
-                } else {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              },
-            ),
+            // FutureBuilder(
+            //   future: newsDataController.fetchTeslaApiData(),
+            //   builder: (context, snapshot) {
+            //     if (snapshot.hasData) {
+            //       return ListView.builder(
+            //         itemCount:
+            //             newsDataController.teslaDataModal!.articles.length,
+            //         itemBuilder: (context, index) {
+            //           return GestureDetector(
+            //             child: Card(
+            //               color: Colors.black,
+            //               child: Column(
+            //                 children: [
+            //                   Container(
+            //                     height: h * 0.3,
+            //                     width: w * 0.9,
+            //                     decoration: BoxDecoration(
+            //                       borderRadius: BorderRadius.circular(15),
+            //                       image: DecorationImage(
+            //                         fit: BoxFit.fill,
+            //                         image: NetworkImage((newsDataController
+            //                                     .teslaDataModal!
+            //                                     .articles[index]
+            //                                     .urlToImage ==
+            //                                 '')
+            //                             ? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqTDCEsvutyTcwyKh0R7p4a2JJ8GyjNqi7BA&s'
+            //                             : newsDataController.teslaDataModal!
+            //                                 .articles[index].urlToImage),
+            //                       ),
+            //                     ),
+            //                   ),
+            //                   Padding(
+            //                     padding: const EdgeInsets.all(8.0),
+            //                     child: Text(
+            //                       newsDataController
+            //                           .teslaDataModal!.articles[index].title,
+            //                       style: TextStyle(color: Colors.white),
+            //                     ),
+            //                   ),
+            //                   Padding(
+            //                     padding: const EdgeInsets.only(right: 20),
+            //                     child: Align(
+            //                       alignment: Alignment.centerRight,
+            //                       child: Text(
+            //                         newsDataController
+            //                             .teslaDataModal!.articles[index].author,
+            //                         style: TextStyle(color: Colors.white),
+            //                       ),
+            //                     ),
+            //                   ),
+            //                   Row(
+            //                     mainAxisAlignment:
+            //                         MainAxisAlignment.spaceBetween,
+            //                     children: [
+            //                       Padding(
+            //                         padding: const EdgeInsets.only(left: 7),
+            //                         child: Text(
+            //                           'Our Sponsor',
+            //                           style: TextStyle(color: Colors.white),
+            //                         ),
+            //                       ),
+            //                       Padding(
+            //                         padding: const EdgeInsets.only(right: 20),
+            //                         child: Align(
+            //                           alignment: Alignment.centerRight,
+            //                           child: Text(
+            //                             newsDataController.teslaDataModal!
+            //                                 .articles[index].source.name,
+            //                             style: TextStyle(color: Colors.white),
+            //                           ),
+            //                         ),
+            //                       ),
+            //                     ],
+            //                   ),
+            //                   Divider(
+            //                     thickness: 1,
+            //                     color: Colors.grey,
+            //                   )
+            //                 ],
+            //               ),
+            //             ),
+            //             onTap: () {
+            //               detailPage = newsDataController.fetchTeslaApiData();
+            //             },
+            //           );
+            //         },
+            //       );
+            //     } else {
+            //       return const Center(
+            //         child: CircularProgressIndicator(),
+            //       );
+            //     }
+            //   },
+            // ),
+            // FutureBuilder(
+            //   future: newsDataController.fetchBusinessApiData(),
+            //   builder: (context, snapshot) {
+            //     if (snapshot.hasData) {
+            //       return ListView.builder(
+            //         itemCount:
+            //             newsDataController.businessDataModal!.articles.length,
+            //         itemBuilder: (context, index) {
+            //           return GestureDetector(
+            //             onTap: () {
+            //               // detailHelper = fetchData;
+            //               // detailList = modal;
+            //               selectedIndex = index;
+            //               Get.toNamed('/detail');
+            //             },
+            //             child: Card(
+            //               color: Colors.black,
+            //               child: Column(
+            //                 children: [
+            //                   Container(
+            //                     height: h * 0.3,
+            //                     width: w * 0.9,
+            //                     decoration: BoxDecoration(
+            //                       borderRadius: BorderRadius.circular(15),
+            //                       image: DecorationImage(
+            //                         fit: BoxFit.fill,
+            //                         image: NetworkImage(newsDataController
+            //                             .businessDataModal!
+            //                             .articles[index]
+            //                             .urlToImage),
+            //                       ),
+            //                     ),
+            //                   ),
+            //                   Padding(
+            //                     padding: const EdgeInsets.all(8.0),
+            //                     child: Text(
+            //                       newsDataController
+            //                           .businessDataModal!.articles[index].title,
+            //                       style: TextStyle(color: Colors.white),
+            //                     ),
+            //                   ),
+            //                   Padding(
+            //                     padding: const EdgeInsets.only(right: 20),
+            //                     child: Align(
+            //                       alignment: Alignment.centerRight,
+            //                       child: Text(
+            //                         newsDataController.businessDataModal!
+            //                             .articles[index].author,
+            //                         style: TextStyle(color: Colors.white),
+            //                       ),
+            //                     ),
+            //                   ),
+            //                   Row(
+            //                     mainAxisAlignment:
+            //                         MainAxisAlignment.spaceBetween,
+            //                     children: [
+            //                       Padding(
+            //                         padding: const EdgeInsets.only(left: 7),
+            //                         child: Text(
+            //                           'Our Sponsor',
+            //                           style: TextStyle(color: Colors.white),
+            //                         ),
+            //                       ),
+            //                       Padding(
+            //                         padding: const EdgeInsets.only(right: 20),
+            //                         child: Align(
+            //                           alignment: Alignment.centerRight,
+            //                           child: Text(
+            //                             newsDataController.businessDataModal!
+            //                                 .articles[index].source.name,
+            //                             style: TextStyle(color: Colors.white),
+            //                           ),
+            //                         ),
+            //                       ),
+            //                     ],
+            //                   ),
+            //                   Divider(
+            //                     thickness: 1,
+            //                     color: Colors.grey,
+            //                   )
+            //                 ],
+            //               ),
+            //             ),
+            //           );
+            //         },
+            //       );
+            //     } else {
+            //       return const Center(
+            //         child: CircularProgressIndicator(),
+            //       );
+            //     }
+            //   },
+            // ),
+            // FutureBuilder(
+            //   future: newsDataController.fetchTechApiData(),
+            //   builder: (context, snapshot) {
+            //     if (snapshot.hasData) {
+            //       return ListView.builder(
+            //         itemCount:
+            //             newsDataController.techDataModal!.articles.length,
+            //         itemBuilder: (context, index) {
+            //           return GestureDetector(
+            //             onTap: () {
+            //               // detailHelper = fetchData;
+            //               // detailList = modal;
+            //               selectedIndex = index;
+            //               Get.toNamed('/detail');
+            //             },
+            //             child: Card(
+            //               color: Colors.black,
+            //               child: Column(
+            //                 children: [
+            //                   Container(
+            //                     height: h * 0.3,
+            //                     width: w * 0.9,
+            //                     decoration: BoxDecoration(
+            //                       borderRadius: BorderRadius.circular(15),
+            //                       image: DecorationImage(
+            //                         fit: BoxFit.fill,
+            //                         image: NetworkImage(newsDataController
+            //                             .techDataModal!
+            //                             .articles[index]
+            //                             .urlToImage),
+            //                       ),
+            //                     ),
+            //                   ),
+            //                   Padding(
+            //                     padding: const EdgeInsets.all(8.0),
+            //                     child: Text(
+            //                       newsDataController
+            //                           .techDataModal!.articles[index].title,
+            //                       style: TextStyle(color: Colors.white),
+            //                     ),
+            //                   ),
+            //                   Padding(
+            //                     padding: const EdgeInsets.only(right: 20),
+            //                     child: Align(
+            //                       alignment: Alignment.centerRight,
+            //                       child: Text(
+            //                         newsDataController
+            //                             .techDataModal!.articles[index].author,
+            //                         style: TextStyle(color: Colors.white),
+            //                       ),
+            //                     ),
+            //                   ),
+            //                   Row(
+            //                     mainAxisAlignment:
+            //                         MainAxisAlignment.spaceBetween,
+            //                     children: [
+            //                       Padding(
+            //                         padding: const EdgeInsets.only(left: 7),
+            //                         child: Text(
+            //                           'Our Sponsor',
+            //                           style: TextStyle(color: Colors.white),
+            //                         ),
+            //                       ),
+            //                       Padding(
+            //                         padding: const EdgeInsets.only(right: 20),
+            //                         child: Align(
+            //                           alignment: Alignment.centerRight,
+            //                           child: Text(
+            //                             newsDataController.techDataModal!
+            //                                 .articles[index].source.name,
+            //                             style: TextStyle(color: Colors.white),
+            //                           ),
+            //                         ),
+            //                       ),
+            //                     ],
+            //                   ),
+            //                   Divider(
+            //                     thickness: 1,
+            //                     color: Colors.grey,
+            //                   )
+            //                 ],
+            //               ),
+            //             ),
+            //           );
+            //         },
+            //       );
+            //     } else {
+            //       return const Center(
+            //         child: CircularProgressIndicator(),
+            //       );
+            //     }
+            //   },
+            // ),
+            // FutureBuilder(
+            //   future: newsDataController.fetchStocksApiData(),
+            //   builder: (context, snapshot) {
+            //     if (snapshot.hasData) {
+            //       return ListView.builder(
+            //         itemCount:
+            //             newsDataController.wallStreetDataModal!.articles.length,
+            //         itemBuilder: (context, index) {
+            //           return GestureDetector(
+            //             onTap: () {
+            //               // detailHelper = fetchData;
+            //               // detailList = modal;
+            //               selectedIndex = index;
+            //               Get.toNamed('/detail');
+            //             },
+            //             child: Card(
+            //               color: Colors.black,
+            //               child: Column(
+            //                 children: [
+            //                   Container(
+            //                     height: h * 0.3,
+            //                     width: w * 0.9,
+            //                     decoration: BoxDecoration(
+            //                       borderRadius: BorderRadius.circular(15),
+            //                       image: DecorationImage(
+            //                         fit: BoxFit.fill,
+            //                         image: NetworkImage(newsDataController
+            //                             .wallStreetDataModal!
+            //                             .articles[index]
+            //                             .urlToImage),
+            //                       ),
+            //                     ),
+            //                   ),
+            //                   Padding(
+            //                     padding: const EdgeInsets.all(8.0),
+            //                     child: Text(
+            //                       newsDataController.wallStreetDataModal!
+            //                           .articles[index].title,
+            //                       style: TextStyle(color: Colors.white),
+            //                     ),
+            //                   ),
+            //                   Padding(
+            //                     padding: const EdgeInsets.only(right: 20),
+            //                     child: Align(
+            //                       alignment: Alignment.centerRight,
+            //                       child: Text(
+            //                         newsDataController.wallStreetDataModal!
+            //                             .articles[index].author,
+            //                         style: TextStyle(color: Colors.white),
+            //                       ),
+            //                     ),
+            //                   ),
+            //
+            //
+            //
+            //                   Row(
+            //                     mainAxisAlignment:
+            //                         MainAxisAlignment.spaceBetween,
+            //                     children: [
+            //                       Padding(
+            //                         padding: const EdgeInsets.only(left: 7),
+            //                         child: Text(
+            //                           'Our Sponsor',
+            //                           style: TextStyle(color: Colors.white),
+            //                         ),
+            //                       ),
+            //                       Padding(
+            //                         padding: const EdgeInsets.only(right: 20),
+            //                         child: Align(
+            //                           alignment: Alignment.centerRight,
+            //                           child: Text(
+            //                             newsDataController.wallStreetDataModal!
+            //                                 .articles[index].source.name,
+            //                             style: TextStyle(color: Colors.white),
+            //                           ),
+            //                         ),
+            //                       ),
+            //                     ],
+            //                   ),
+            //                   Divider(
+            //                     thickness: 1,
+            //                     color: Colors.grey,
+            //                   )
+            //                 ],
+            //               ),
+            //             ),
+            //           );
+            //         },
+            //       );
+            //     } else {
+            //       return const Center(
+            //         child: CircularProgressIndicator(),
+            //       );
+            //     }
+            //   },
+            // ),
 
             // FutureBuilder(
             //   future: newsDataController.apiHelper.fetchApiCompanyArticleData(),
@@ -731,3 +726,4 @@ class HomePage extends StatelessWidget {
 // NewsModal? detailList;
 int selectedIndex = 0;
 var detailPage;
+NewsDataModal? detailList;
