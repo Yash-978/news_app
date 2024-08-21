@@ -16,9 +16,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      initialRoute: '/splash',
       getPages: [
-        GetPage(name: '/', page: () => const SplashPage()),
-        GetPage(name: '/home', page: () => const HomePage()),
+        GetPage(name: '/splash', page: () => const SplashPage()),
+        GetPage(name: '/', page: () => const HomePage()),
         GetPage(name: '/detail', page: () => const DetailPage()),
       ],
     );

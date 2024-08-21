@@ -24,8 +24,8 @@ class DetailPage extends StatelessWidget {
                 fontSize: 23,
                 fontWeight: FontWeight.w500)),
       ),
-      body: Stack(
-        children: [
+      body: ListView(
+        children:[
           FutureBuilder(
             future: detailPage,
             builder: (context, snapshot) {
@@ -110,10 +110,10 @@ class DetailPage extends StatelessWidget {
                             fit: BoxFit.fitHeight,
                             image: NetworkImage(
                               (detailList!.articles[selectedIndex].urlToImage ==
-                                      ''
+                                  ''
                                   ? 'https://images.tv9hindi.com/wp-content/uploads/2024/08/chief-election-commissioner-rajiv-kumar-addresses-press-conference-in-jammu.jpg?w=670&ar=16:9'
                                   : detailList!
-                                      .articles[selectedIndex].urlToImage),
+                                  .articles[selectedIndex].urlToImage),
                             ),
                           ),
                           color: Colors.white,
@@ -126,7 +126,7 @@ class DetailPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: SizedBox(
-                          height: 350,
+                          height: 400,
                           width: 400,
                           child: Column(
                             children: [
@@ -135,9 +135,9 @@ class DetailPage extends StatelessWidget {
                                 style: const TextStyle(
                                     color: Colors.white, fontSize: 30),
                               ),
-                              const SizedBox(
-                                height: 7,
-                              ),
+                              // const SizedBox(
+                              //   height: 7,
+                              // ),
                               Text(
                                 detailList!.articles[selectedIndex].title,
                                 style: const TextStyle(
@@ -153,9 +153,9 @@ class DetailPage extends StatelessWidget {
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
-                              const SizedBox(
-                                height: 18,
-                              ),
+                              // const SizedBox(
+                              //   height: 18,
+                              // ),
                               const Align(
                                 alignment: Alignment.topLeft,
                                 child: Text(
@@ -188,7 +188,7 @@ class DetailPage extends StatelessWidget {
               }
             },
           ),
-        ],
+        ]
       ),
     );
   }

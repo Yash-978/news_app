@@ -1,12 +1,7 @@
-
 import 'package:get/get.dart';
 import 'package:news_app/Model/Model.dart';
 
 import '../Helper/ApiHelper/apiHelper.dart';
-
-
-
-
 
 class NewsDataController extends GetxController {
   var apiHelper = ApiHelper();
@@ -15,9 +10,11 @@ class NewsDataController extends GetxController {
   NewsDataModal? businessDataModal;
   NewsDataModal? techDataModal;
   NewsDataModal? wallStreetDataModal;
+
   // newsDataModal
   // businessDataModal
   // teslaDataModal
+
   // techDataModal
   // wallStreetDataModal
 
