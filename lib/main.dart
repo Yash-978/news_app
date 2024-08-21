@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'View/Screens/DetailScreen.dart';
 import 'View/Screens/HomeScreen.dart';
+import 'View/Screens/SplashScreen.dart';
 
 void main()
 {
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       getPages: [
-        GetPage(name: '/', page: () => const HomePage()),
+        GetPage(name: '/', page: () => const SplashPage()),
+        GetPage(name: '/home', page: () => const HomePage()),
         GetPage(name: '/detail', page: () => const DetailPage()),
       ],
     );
