@@ -10,6 +10,8 @@ class DetailPage extends StatelessWidget {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
 
+
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
